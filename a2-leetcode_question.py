@@ -26,3 +26,41 @@ Example 3:
 Input: amount = 10, coins = [10]
 Output: 1
 --------------------------"""
+"""
+concept-dynamic programing
+//split your amount from o to n
+   0   1   2   3    4   5    ...  n  //the amount
+       //consider you have only one coin in the beginning
+1  1   1   1   1    1   1    ...  1 //you can have only one combinations
+ //for 0 it is always 1 combinations 0! = 1 remember
+//now you have 1&2 if denominations < coin values copy above value
+//if it is greater than or equal than copy the above and add current row[denominations - coin value]
+2  1   1   1+1 1+1  1+2 1+2 ...   1+curRow[n-coin value]
+          //deno-coin value is 0 its value is 1
+
+
+3  1   1   2   2+1  3+1 3+2       1+curRow[n-coin value]+curRow[n-coin value]
+
+now the last row last column value is the answer
+
+
+"""
+
+def no_of_combinations_of_coin(amount,coins):
+  grid = [[0]*(amount+1) for i in range(len(coins))]
+  for i in range(len(coins)):
+
+    for j in range(amount+1):
+      if coins[i] <= amount:
+        if (i == 0 or j == 0):
+          grid[i][j] = 1
+        elif coins[i] > j and coins[i] <= amount:
+          grid[i][j] = grid[i-1][j]
+        elif coins[i] <= j and coins[i] <= amount:
+          grid[i][j] = grid[i-1][j] + grid[i][j-coins[i]]
+  
+  return grid[len(coins)-1][amount] 
+
+
+print(no_of_combinations_of_coin(2,[3]))
+
