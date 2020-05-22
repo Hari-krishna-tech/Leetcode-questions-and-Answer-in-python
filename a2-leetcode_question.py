@@ -57,9 +57,9 @@ def no_of_combinations_of_coin(amount,coins):
         grid[i][j] = grid[i-1][j] 
       elif coins[i] <= j and coins[i] <= amount:
         grid[i][j] = grid[i-1][j] + grid[i][j-coins[i]] if coins[i] <= amount else 0
-  print(grid)
+
   return grid[len(coins)-1][amount] 
 
 
-print(no_of_combinations_of_coin(5,[1,2,5,6]))
+print(no_of_combinations_of_coin(2,[3]))
 
