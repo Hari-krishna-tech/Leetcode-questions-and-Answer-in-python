@@ -51,16 +51,15 @@ def no_of_combinations_of_coin(amount,coins):
   for i in range(len(coins)):
 
     for j in range(amount+1):
-      if coins[i] <= amount:
-        if (i == 0 or j == 0):
-          grid[i][j] = 1
-        elif coins[i] > j and coins[i] <= amount:
-          grid[i][j] = grid[i-1][j]
-        elif coins[i] <= j and coins[i] <= amount:
-          grid[i][j] = grid[i-1][j] + grid[i][j-coins[i]]
-  
+      if (i == 0 or j == 0):
+        grid[i][j] = 1 if coins[i] <= amount or j==0 else 0
+      elif coins[i] > j:
+        grid[i][j] = grid[i-1][j] 
+      elif coins[i] <= j and coins[i] <= amount:
+        grid[i][j] = grid[i-1][j] + grid[i][j-coins[i]] if coins[i] <= amount else 0
+  print(grid)
   return grid[len(coins)-1][amount] 
 
 
-print(no_of_combinations_of_coin(2,[3]))
+print(no_of_combinations_of_coin(5,[1,2,5,6]))
 
