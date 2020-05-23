@@ -179,12 +179,13 @@ ll1.remove_by_data(1)
 ll1.remove_by_data(2)
 ll1.remove_by_data(5)
 ll1.append_list(common.get_head())
+"""
 for i in ll1:
   print(i)
 print("length: ",ll1.get_length())
 print("head: ",ll1.get_head().data)
 print("tail: ",ll1.get_tail().data)
-    
+  """  
 ll2 = LinkedList()
 ll2.add_first(1)
 ll2.add_first(2)
@@ -194,13 +195,44 @@ ll2.add_first(5)
 ll2.add_first(6)
 ll2.append_list(common.get_head())
 
-
+"""
 for i in ll2:
   print(i)
 print("length: ",ll2.get_length())
 print("head: ",ll2.get_head().data)
 print("tail: ",ll2.get_tail().data)
-    
+"""   
 """
 Actuall point 
 """
+def merge_point_node( linkedlist1 , linkedlist2 ):
+  m = linkedlist1.get_length()#O(1)
+  n = linkedlist2.get_length()#O(1)
+  print(m,n)
+  ll1= linkedlist1.get_head()#O(1)
+  ll2 = linkedlist2.get_head()#O(1)
+  if m > n:#O(1)
+    swap(ll1,ll2)
+    swap(m,n)
+  extra = n - m
+  i = 1
+  cur_node = ll2
+  while i<=extra:
+    cur_node = cur_node.next
+    i += 1
+  ll2 = cur_node
+  for i in range(m):#O(n)
+    if ll1 is ll2:
+      return ll1
+    ll1 = ll1.next
+    ll2 = ll2.next
+  return None
+#total complexity O(n) time space O(1)
+
+print(merge_point_node(ll1,ll2).data)
+
+
+def swap(ll1,ll2):
+  temp = ll1
+  ll2 = ll1
+  ll1 = temp
