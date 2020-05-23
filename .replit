@@ -1,2 +1,2 @@
 language = "python3"
-run = "python a5-leetcode_question.py"
+run = "python a4-leetcode_question.py"
