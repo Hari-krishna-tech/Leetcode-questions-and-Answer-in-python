@@ -24,8 +24,8 @@ def sum_of_two(nums, target):
     complement = target - nums[i]
     if complement in nums_dict:
       return list((i,nums_dict[complement]))
-    
+  return [-1,-1]
 #O(n) space
 #O(n) time
 
-print(sum_of_two([2, 6, 7, 15,0],10))
+print(sum_of_two([2, 6, 7, 15,0,8],10))
