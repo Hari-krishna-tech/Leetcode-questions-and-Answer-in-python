@@ -1,7 +1,7 @@
 """
 merge point of two linked list
 """
-# LinkedList implementation added lot of extra things JFF
+# LinkedList implementation added lot of extra things just for fun
 class Node:
   def __init__(self,data,next=None):
     self.data = data
