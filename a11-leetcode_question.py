@@ -57,14 +57,13 @@ print("before Reversing")
 for i in ll:
   print(i)
 
-print(ll.head.data)
 # iterative method
-def reverse(ll):
+def reverse():
   pre_node = None
   cur_node = ll.head
   next = None
 
-  while cur_node != None:
+  while cur_node is not None:
     next = cur_node.next
     cur_node.next = pre_node
     pre_node = cur_node
@@ -73,7 +72,7 @@ def reverse(ll):
 
   ll.head = pre_node
 
-reverse(ll)
+reverse()
 print("after reversing")
 for i in ll:
   print(i)
